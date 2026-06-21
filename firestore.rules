@@ -1,0 +1,24 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Allow read/write for users to claim usernames
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    // Secure messages collection
+    match /messages/{messageId} {
+      allow read, write: if true;
+    }
+
+    // Secure rooms collection
+    match /rooms/{roomId} {
+      allow read, write: if true;
+    }
+  }
+}

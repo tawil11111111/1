@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Google AI Studio App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      if (typeof global === 'undefined') {
+        window.global = Object.create(window);
+        window.global.global = window.global;
+      }
+      
+      // Prevent libraries from trying to overwrite fetch if it's already a getter
+      (function() {
+        const originalFetch = window.fetch;
+        try {
+          Object.defineProperty(window, 'fetch', {
+            get: () => originalFetch,
+            set: () => { console.warn('Something tried to overwrite fetch'); },
+            configurable: true
+          });
+        } catch (e) {
+          // If it's not configurable, we can't do anything, but at least we tried
+        }
+      })();
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

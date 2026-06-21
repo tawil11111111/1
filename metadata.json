@@ -1,0 +1,12 @@
+{
+  "name": "ViralStudio AI",
+  "description": "AI-powered video studio for viral content. Generate thumbnails, catchy titles, metadata, and analyze video topics automatically using browser-side FFmpeg and Gemini AI.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "display-capture"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
